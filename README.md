@@ -1,23 +1,23 @@
 1.Interfejs
--jak dziala program
- -menu
- -wybierz rozmiar
-  -wpisz wartosci
- -edytuj wartosci
- -wyswietl zawartosci
+- jak dziala program
+ - menu
+ - wybierz rozmiar
+  - wpisz wartosci
+ - edytuj wartosci
+ - wyswietl zawartosci
 
 
 2.Funkcje
--projekt
--kod zrodlowy
- -main.cpp
-  -glowna funkcja
- -tablica.cpp
-  -pobiera rozmiar(liczba kolumn i wierszy)
-   -pobiera wartosci
-  -mozliwosc edycji konkretnej komorki
-   -nr wiersza;nr kolumny
- -tablica_wysw.cpp
-  -wyswietla wartosci
- -menu.cpp
-  -interakcja z uzytkownikiem (moze wybierac dzialania)
+- projekt
+- kod zrodlowy
+ - main.cpp
+  - glowna funkcja
+ - tablica.cpp
+  - pobiera rozmiar(liczba kolumn i wierszy)
+   - pobiera wartosci
+  - mozliwosc edycji konkretnej komorki
+   - nr wiersza;nr kolumny
+ - tablica_wysw.cpp
+  - wyswietla wartosci
+ - menu.cpp
+  - interakcja z uzytkownikiem (moze wybierac dzialania)
