@@ -21,3 +21,6 @@
   -wyswietla wartosci
  -menu.cpp
   -interakcja z uzytkownikiem (moze wybierac dzialania)
+
+3.Pliki
+ -
