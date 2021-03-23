@@ -1,10 +1,10 @@
 1.Interfejs
--jak dziala program
- -menu
- -wybierz rozmiar
-  -wpisz wartosci
- -edytuj wartosci
- -wyswietl zawartosci
+- jak dziala program
+ - menu
+ - wybierz rozmiar
+  - wpisz wartosci
+ - edytuj wartosci
+ - wyswietl zawartosci
 
 
 2.Funkcje
@@ -23,4 +23,5 @@
   -interakcja z uzytkownikiem (moze wybierac dzialania)
 
 3.Pliki
- -
+ -mozliwosc zapisu do pliku
+ -mozliwosc odczytu z pliku
