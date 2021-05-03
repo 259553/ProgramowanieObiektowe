@@ -32,3 +32,4 @@
 *.app
 latex
 html
+.vscode

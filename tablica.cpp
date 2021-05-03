@@ -1,40 +1,36 @@
 #include <iostream>
-#include"tablica.hpp"
+#include "tablica.hpp"
 using namespace std;
-int** stworz(int &wiersze, int &kolumny)
+
+int edycjawartosc(arkusz *arkusz1, int w, int k, int wartosc)
 {
-  cout << "Jaki ma byc rozmiar arkusza?" << endl;
-  cout << "Liczba kolumn: ";
-  cin >> kolumny;
-  cout << "Liczba wierszy ";
-  cin >> wiersze;
-  int **tablica = new int *[wiersze];
-  for (int i = 0; i < wiersze; i++)
+  if (arkusz1->wiersz < w || arkusz1->kolumna < k)
   {
-    tablica[i]=new int[kolumny];
+    return 1;
   }
-  system("clear");
-  cout << "Twoj arkusz ma rozmiar " << wiersze << "X" << kolumny << endl;
-  cout << "Uzupelnij arkusz" << endl;
-  for (int w = 0; w < wiersze; w++)
+  else if (w < 0 || k < 0)
   {
-    for (int k = 0; k < kolumny; k++)
-    {
-      cout << "Komorka " << w << "," << k << " = ";
-      cin >> tablica[w][k];
-    }
+    return 1;
   }
-  return tablica;
+  else
+  {
+    arkusz1->tablica[w][k] = wartosc;
+  }
+  return 0;
 }
 
-void edycja(int wiersze, int kolumny, int **tablica)
+int tworzarkusz(arkusz *arkusz1, int w, int k)
 {
-  int w;
-  int k;
-  cout<<"Wybierz wiersz: ";
-  cin>>w;
-  cout<<"Wybierz komokre: ";
-  cin>>k;
-  cout<<"Wybierz wartosc: ";
-  cin>>tablica[w][k];
+  if (w < 1 || k < 1)
+  {
+    return 1;
+  }
+  arkusz1->wiersz = w;
+  arkusz1->kolumna = k;
+  arkusz1->tablica = new int *[w];
+  for (int i = 0; i < w; i++)
+  {
+    arkusz1->tablica[i] = new int[k];
+  }
+  return 0;
 }
