@@ -1,25 +1,59 @@
 ///@file
 #pragma once
-struct arkusz
+#include <string>
+class komorka
+{
+    int wartoscliczbowa = 0;
+    std::string wartosctekstowa = "";
+    bool tekstowa;
+
+public:
+    komorka()
+    {
+        tekstowa = false;
+    }
+    komorka(bool czytekstowa) : tekstowa(czytekstowa)
+    {
+    }
+    void ustawwartosc(int wartosc);
+    void ustawwartosc(std::string wartosc);
+    int zwrocwartoscliczbowa();
+    std::string zwrocwartosctekstowa();
+    bool czytekstowa();
+};
+class arkusz
 {
     int wiersz;
     int kolumna;
-    int **tablica;
-};
-/**
- * 
- * 
- * funkcja umozliwajaca edycje wartosci w konkretnych komorkach arkusza
- * 
- * 
- */
-int edycjawartosc(arkusz*arkusz1, int w, int k, int wartosc);
-void wyswietl(arkusz arkusz1 );
-/** funkcja do tworzenia nowego arkusza
+    komorka **tablica;
+    bool czytekstowa;
+
+public:
+    /** funkcja do tworzenia nowego arkusza
  * 
  * 
  * funkcja zajmujaca sie tworzeniem arkusza o poprawnych rozmiarach
  * 
  * 
  */
-int tworzarkusz(arkusz *arkusz1, int w, int k);
+    int tworzarkusz(int w, int k);
+    arkusz()
+    {
+    }
+    arkusz(int wiersze, int kolumny, bool tekstowa);
+    /**
+ * 
+ * 
+ * funkcja umozliwajaca edycje wartosci w konkretnych komorkach arkusza
+ * 
+ * 
+ */
+    int edycjawartosc(int w, int k, int wartosc);
+    int zwrocwartosc(int w, int k);
+    int edycjawartosc(int w, int k, std::string wartosc);
+    std::string zwrocwartosctekstowa(int w, int k);
+    int zwrocwiersz();
+    int zwrockolumna();
+    bool czyarkusztekstowy();
+};
+void wyswietl(arkusz arkusz1);

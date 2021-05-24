@@ -3,11 +3,11 @@
 using namespace std;
 void wyswietl(arkusz arkusz1 )
 {
-for (int w=0; w<arkusz1.wiersz; w++)
+for (int w=0; w<arkusz1.zwrocwiersz(); w++)
   { 
-   for( int k=0; k<arkusz1.kolumna; k++)
+   for( int k=0; k<arkusz1.zwrockolumna(); k++)
     {
-     cout<<"Komorka "<<w<<","<<k<<" = "<<arkusz1.tablica[w][k];
+     cout<<"Komorka "<<w<<","<<k<<" = "<<arkusz1.zwrocwartosctekstowa(w,k);
      cout<<"\t";
     }
     cout<<"\n";
