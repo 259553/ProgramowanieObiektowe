@@ -73,19 +73,22 @@ int stworz(arkusz *arkusz1)
   cin >> kolumna;
   cout << "Liczba wierszy ";
   cin >> wiersz;
-  if (arkusz1->tworzarkusz(wiersz, kolumna))
-  {
-    cout << "Niepoprawny rozmiar" << endl;
-    return 1;
-  }
-  cout << "Jakiego typu ma byc tablica?" << endl;
   cout << "Wprowadz 1 dla tekstowej" << endl;
-  int pomocnicza = 0;
-  cin >> pomocnicza;
-  bool typ = false;
-  if (pomocnicza == 1)
+  bool *typ = new bool[kolumna];
+  for (int i = 0; i < kolumna; i++)
   {
-    typ = true;
+    cout << "Jakiego typu ma byc kolumna?" << endl;
+    cout << "Kolumna " << i << endl;
+    int pomocnicza = 0;
+    cin >> pomocnicza;
+    if (pomocnicza == 1)
+    {
+      typ[i] = true;
+    }
+    else
+    {
+      typ[i] = false;
+    }
   }
   arkusz nowyarkusz(wiersz, kolumna, typ);
   *arkusz1 = nowyarkusz;
@@ -125,7 +128,7 @@ void edycja(arkusz *arkusz1)
   cout << "Wybierz komokre: ";
   cin >> k;
   cout << "Wybierz wartosc: ";
-  if (arkusz1->czyarkusztekstowy())
+  if (arkusz1->czykolumnatekstowa(k))
   {
     cin >> tekst;
     if (arkusz1->edycjawartosc(w, k, tekst))
@@ -135,7 +138,12 @@ void edycja(arkusz *arkusz1)
   }
   else
   {
-    cin >> wartosc;
+    while(!(cin >> wartosc))
+    {
+      cin.clear();
+      cin.ignore(1000,'\n');
+      cout<<"Nieprawidlowa wartosc wprowadzona"<<endl;
+    }
     if (arkusz1->edycjawartosc(w, k, wartosc))
     {
       cout << "Niepoprawna wybrana wartosc" << endl;

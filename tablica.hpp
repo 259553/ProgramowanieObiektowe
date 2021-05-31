@@ -37,7 +37,7 @@ class arkusz
     int wiersz;
     int kolumna;
     komorka ***tablica;
-    bool czytekstowa;
+    bool *czytekstowa;
 
 public:
     /** funkcja do tworzenia nowego arkusza
@@ -51,7 +51,7 @@ public:
     arkusz()
     {
     }
-    arkusz(int wiersze, int kolumny, bool tekstowa);
+    arkusz(int wiersze, int kolumny, bool *tekstowa);
     /**
  * 
  * 
@@ -65,6 +65,6 @@ public:
     std::string zwrocwartosctekstowa(int w, int k);
     int zwrocwiersz();
     int zwrockolumna();
-    bool czyarkusztekstowy();
+    bool czykolumnatekstowa(int k);
 };
 void wyswietl(arkusz arkusz1);

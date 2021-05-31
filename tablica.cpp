@@ -50,7 +50,7 @@ int arkusz::tworzarkusz(int w, int k)
     tablica[i] = new komorka *[k];
     for (int j = 0; j < k; j++)
     {
-      if (czytekstowa)
+      if (czytekstowa[j])
       {
         tablica[i][j] = new komorkatekstowa();
       }
@@ -104,7 +104,7 @@ int arkusz::zwrockolumna()
   return kolumna;
 }
 
-arkusz::arkusz(int wiersze, int kolumny, bool tekstowa)
+arkusz::arkusz(int wiersze, int kolumny, bool *tekstowa)
 {
   czytekstowa = tekstowa;
   tworzarkusz(wiersze, kolumny);
@@ -131,9 +131,9 @@ bool komorkaliczbowa::czytekstowa()
   return false;
 }
 
-bool arkusz::czyarkusztekstowy()
+bool arkusz::czykolumnatekstowa(int k)
 {
-  return czytekstowa;
+  return czytekstowa[k];
 }
 
 void komorkatekstowa::ustawwartosc(int wartosc)
