@@ -3,18 +3,29 @@
 #include <string>
 class komorka
 {
-    int wartoscliczbowa = 0;
-    std::string wartosctekstowa = "";
-    bool tekstowa;
+public:
+    virtual void ustawwartosc(int wartosc) = 0;
+    virtual void ustawwartosc(std::string wartosc) = 0;
+    virtual int zwrocwartoscliczbowa() = 0;
+    virtual std::string zwrocwartosctekstowa() = 0;
+    virtual bool czytekstowa() = 0;
+};
+class komorkaliczbowa : public komorka
+{
+    int wartosc = 0;
 
 public:
-    komorka()
-    {
-        tekstowa = false;
-    }
-    komorka(bool czytekstowa) : tekstowa(czytekstowa)
-    {
-    }
+    void ustawwartosc(int wartosc);
+    void ustawwartosc(std::string wartosc);
+    int zwrocwartoscliczbowa();
+    std::string zwrocwartosctekstowa();
+    bool czytekstowa();
+};
+class komorkatekstowa : public komorka
+{
+    std::string wartosc = "";
+
+public:
     void ustawwartosc(int wartosc);
     void ustawwartosc(std::string wartosc);
     int zwrocwartoscliczbowa();
@@ -25,7 +36,7 @@ class arkusz
 {
     int wiersz;
     int kolumna;
-    komorka **tablica;
+    komorka ***tablica;
     bool czytekstowa;
 
 public:

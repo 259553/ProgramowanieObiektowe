@@ -14,7 +14,7 @@ int arkusz::edycjawartosc(int w, int k, int wartosc)
   }
   else
   {
-    tablica[w][k].ustawwartosc(wartosc);
+    tablica[w][k]->ustawwartosc(wartosc);
   }
   return 0;
 }
@@ -31,7 +31,7 @@ int arkusz::edycjawartosc(int w, int k, std::string wartosc)
   }
   else
   {
-    tablica[w][k].ustawwartosc(wartosc);
+    tablica[w][k]->ustawwartosc(wartosc);
   }
   return 0;
 }
@@ -44,13 +44,20 @@ int arkusz::tworzarkusz(int w, int k)
   }
   wiersz = w;
   kolumna = k;
-  tablica = new komorka *[w];
+  tablica = new komorka **[w];
   for (int i = 0; i < w; i++)
   {
-    tablica[i] = new komorka[k];
-    for(int j=0;j<k;j++)
+    tablica[i] = new komorka *[k];
+    for (int j = 0; j < k; j++)
     {
-      tablica[i][j]=komorka(czytekstowa);
+      if (czytekstowa)
+      {
+        tablica[i][j] = new komorkatekstowa();
+      }
+      else
+      {
+        tablica[i][j] = new komorkatekstowa();
+      }
     }
   }
   return 0;
@@ -68,7 +75,7 @@ int arkusz::zwrocwartosc(int w, int k)
   }
   else
   {
-    return tablica[w][k].zwrocwartoscliczbowa();
+    return tablica[w][k]->zwrocwartoscliczbowa();
   }
 }
 
@@ -84,7 +91,7 @@ std::string arkusz::zwrocwartosctekstowa(int w, int k)
   }
   else
   {
-    return tablica[w][k].zwrocwartosctekstowa();
+    return tablica[w][k]->zwrocwartosctekstowa();
   }
 }
 
@@ -99,42 +106,53 @@ int arkusz::zwrockolumna()
 
 arkusz::arkusz(int wiersze, int kolumny, bool tekstowa)
 {
-  czytekstowa=tekstowa;
+  czytekstowa = tekstowa;
   tworzarkusz(wiersze, kolumny);
 }
 
-void komorka::ustawwartosc(int wartosc)
+void komorkaliczbowa::ustawwartosc(int wartosc)
 {
- wartoscliczbowa=wartosc;
+  this->wartosc = wartosc;
 }
-void komorka::ustawwartosc(std::string wartosc)
+void komorkaliczbowa::ustawwartosc(std::string wartosc)
 {
- wartosctekstowa=wartosc;
+  this->wartosc = 0;
 }
-int komorka::zwrocwartoscliczbowa()
+int komorkaliczbowa::zwrocwartoscliczbowa()
 {
-  if(tekstowa)
-  {
-    return 0;
-  }
-  else
-  return wartoscliczbowa;
+  return wartosc;
 }
-string komorka::zwrocwartosctekstowa()
+string komorkaliczbowa::zwrocwartosctekstowa()
 {
-  if(tekstowa)
-  {
-  return wartosctekstowa;
-  }
-  else
-  return std::to_string(wartoscliczbowa);
+  return std::to_string(wartosc);
 }
-bool komorka::czytekstowa()
+bool komorkaliczbowa::czytekstowa()
 {
-  return tekstowa;
+  return false;
 }
 
 bool arkusz::czyarkusztekstowy()
 {
   return czytekstowa;
+}
+
+void komorkatekstowa::ustawwartosc(int wartosc)
+{
+  this->wartosc = to_string(wartosc);
+}
+void komorkatekstowa::ustawwartosc(std::string wartosc)
+{
+  this->wartosc = wartosc;
+}
+int komorkatekstowa::zwrocwartoscliczbowa()
+{
+  return 0;
+}
+string komorkatekstowa::zwrocwartosctekstowa()
+{
+  return wartosc;
+}
+bool komorkatekstowa::czytekstowa()
+{
+  return true;
 }
