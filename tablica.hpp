@@ -1,9 +1,18 @@
 ///@file
 #pragma once
 #include <string>
+/**
+ * @brief klasa interfejsowa komorka
+ * 
+ */
 class komorka
 {
 public:
+/**
+ * @brief ustawia wartosc komorki
+ * 
+ * @param wartosc nowa wartosc ktora komorka powinna przyjac
+ */
     virtual void ustawwartosc(std::string wartosc) = 0;
     virtual std::string zwrocwartosctekstowa() = 0;
     virtual bool czytekstowa() = 0;
