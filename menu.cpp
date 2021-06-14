@@ -101,17 +101,10 @@ int stworz(arkusz *arkusz1)
   {
     for (int k = 0; k < kolumna; k++)
     {
-      cout << "Komorka " << w << "," << k << " = ";
-      if (typ)
-      {
-        cin >> tekst;
-        arkusz1->edycjawartosc(w, k, tekst);
-      }
-      else
-      {
-        cin >> temp;
-        arkusz1->edycjawartosc(w, k, temp);
-      }
+      cout << "Komorka " << k << "," << w << " = ";
+
+      cin >> tekst;
+      arkusz1->edycjawartosc(w, k, tekst);
     }
   }
   return 0;
@@ -128,25 +121,9 @@ void edycja(arkusz *arkusz1)
   cout << "Wybierz komokre: ";
   cin >> k;
   cout << "Wybierz wartosc: ";
-  if (arkusz1->czykolumnatekstowa(k))
+  cin >> tekst;
+  if (arkusz1->edycjawartosc(w, k, tekst))
   {
-    cin >> tekst;
-    if (arkusz1->edycjawartosc(w, k, tekst))
-    {
-      cout << "Niepoprawna wybrana wartosc" << endl;
-    }
-  }
-  else
-  {
-    while(!(cin >> wartosc))
-    {
-      cin.clear();
-      cin.ignore(1000,'\n');
-      cout<<"Nieprawidlowa wartosc wprowadzona"<<endl;
-    }
-    if (arkusz1->edycjawartosc(w, k, wartosc))
-    {
-      cout << "Niepoprawna wybrana wartosc" << endl;
-    }
+    cout << "Niepoprawna wybrana wartosc" << endl;
   }
 }

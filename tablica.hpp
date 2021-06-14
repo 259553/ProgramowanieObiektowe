@@ -4,9 +4,7 @@
 class komorka
 {
 public:
-    virtual void ustawwartosc(int wartosc) = 0;
     virtual void ustawwartosc(std::string wartosc) = 0;
-    virtual int zwrocwartoscliczbowa() = 0;
     virtual std::string zwrocwartosctekstowa() = 0;
     virtual bool czytekstowa() = 0;
 };
@@ -15,20 +13,16 @@ class komorkaliczbowa : public komorka
     int wartosc = 0;
 
 public:
-    void ustawwartosc(int wartosc);
     void ustawwartosc(std::string wartosc);
-    int zwrocwartoscliczbowa();
     std::string zwrocwartosctekstowa();
     bool czytekstowa();
 };
 class komorkatekstowa : public komorka
 {
-    std::string wartosc = "";
+    std::string wartosc = ".";
 
 public:
-    void ustawwartosc(int wartosc);
     void ustawwartosc(std::string wartosc);
-    int zwrocwartoscliczbowa();
     std::string zwrocwartosctekstowa();
     bool czytekstowa();
 };
@@ -59,12 +53,12 @@ public:
  * 
  * 
  */
-    int edycjawartosc(int w, int k, int wartosc);
     int zwrocwartosc(int w, int k);
     int edycjawartosc(int w, int k, std::string wartosc);
     std::string zwrocwartosctekstowa(int w, int k);
     int zwrocwiersz();
     int zwrockolumna();
     bool czykolumnatekstowa(int k);
+    int rozszerz();
 };
 void wyswietl(arkusz arkusz1);

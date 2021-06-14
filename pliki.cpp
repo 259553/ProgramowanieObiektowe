@@ -59,16 +59,9 @@ int odczyt(arkusz *arkusz1)
         {
             for (int k = 0; k < kolumny; k++)
             {
-                if (tekstowa)
-                {
-                    plik >> tekst;
-                    nowyarkusz.edycjawartosc(w, k, tekst);
-                }
-                else
-                {
-                    plik >> temp;
-                    nowyarkusz.edycjawartosc(w, k, temp);
-                }
+
+                plik >> tekst;
+                nowyarkusz.edycjawartosc(w, k, tekst);
             }
         }
         *arkusz1 = nowyarkusz;
