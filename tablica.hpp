@@ -59,6 +59,6 @@ public:
     int zwrocwiersz();
     int zwrockolumna();
     bool czykolumnatekstowa(int k);
-    int rozszerz();
+    int rozszerz(int x, int y, bool v);
 };
 void wyswietl(arkusz arkusz1);

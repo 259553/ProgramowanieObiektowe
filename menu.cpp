@@ -19,6 +19,7 @@ void menu()
     cout << "3.Wyswietl zawartosc" << endl;
     cout << "4.Zapisz tablice" << endl;
     cout << "5.Wczytaj tablice" << endl;
+    cout << "6.Rozszerz arkusz" <<endl;
     cout << "0.Wylacz program" << endl;
     cin >> liczba;
     system("clear");
@@ -57,6 +58,11 @@ void menu()
       case 0:
         cout << "Plik wczytany" << endl;
         break;
+      }
+      break;
+      case 6:
+      {
+        rozszerzarkusz(&tablica);
       }
       break;
     }
@@ -125,5 +131,32 @@ void edycja(arkusz *arkusz1)
   if (arkusz1->edycjawartosc(w, k, tekst))
   {
     cout << "Niepoprawna wybrana wartosc" << endl;
+  }
+}
+
+void rozszerzarkusz(arkusz *warkusz)
+{
+  int w;
+  int k;
+  bool czytekst;
+  cout << "Podaj ilosc wierszy: ";
+  cin >> w;
+  cout << "Podaj ilosc kolumn: ";
+  cin >> k;
+
+  cout << "Wprowadz 1 dla tekstowej" << endl;
+  int pomocnicza = 0;
+  cin >> pomocnicza;
+  if (pomocnicza == 1)
+  {
+    czytekst = true;
+  }
+  else
+  {
+    czytekst = false;
+  }
+  if (warkusz->rozszerz(k, w, czytekst))
+  {
+    cout<<"Nieprawidlowy rozmiar arkusza \n";
   }
 }

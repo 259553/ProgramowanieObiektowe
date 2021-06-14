@@ -19,3 +19,4 @@ void edycja(arkusz *arkusz1);
  * 
  */
 int stworz(arkusz *arkusz1);
+void rozszerzarkusz(arkusz*warkusz);

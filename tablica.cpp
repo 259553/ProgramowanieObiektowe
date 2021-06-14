@@ -81,11 +81,10 @@ void komorkaliczbowa::ustawwartosc(std::string wartosc)
 {
   try
   {
-    this->wartosc=std::stoi(wartosc);
+    this->wartosc = std::stoi(wartosc);
   }
-  catch(...)
+  catch (...)
   {
-
   }
 }
 string komorkaliczbowa::zwrocwartosctekstowa()
@@ -113,4 +112,53 @@ string komorkatekstowa::zwrocwartosctekstowa()
 bool komorkatekstowa::czytekstowa()
 {
   return true;
+}
+int arkusz::rozszerz(int x, int y, bool v)
+{
+  if (x < 1 || y < 1)
+  {
+    return 1;
+  }
+  komorka ***nowaTablica;
+  bool *noweTypy = new bool[x];
+  for (int i = 0; i < x; i++)
+  {
+    if (wiersz > i)
+    {
+      noweTypy[i] = czytekstowa[i];
+    }
+    else
+    {
+      noweTypy[i] = v;
+    }
+  }
+  nowaTablica = new komorka **[y];
+  for (size_t wys = 0; wys < y; wys++)
+  {
+    nowaTablica[wys] = new komorka *[x];
+    for (size_t szer = 0; szer < x; szer++)
+    {
+      if (noweTypy[szer])
+      {
+        nowaTablica[wys][szer] = new komorkatekstowa();
+      }
+      else
+      {
+        nowaTablica[wys][szer] = new komorkaliczbowa();
+      }
+      if (wys < wiersz && szer < kolumna)
+      {
+        nowaTablica[wys][szer]->ustawwartosc(tablica[wys][szer]->zwrocwartosctekstowa());
+        delete tablica[wys][szer];
+      }
+    }
+  }
+
+  delete[] czytekstowa;
+  delete[](tablica);
+  wiersz = y;
+  kolumna = x;
+  tablica = nowaTablica;
+  czytekstowa = noweTypy;
+  return 0;
 }
