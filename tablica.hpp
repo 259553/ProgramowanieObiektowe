@@ -55,13 +55,6 @@ public:
     {
     }
     arkusz(int wiersze, int kolumny, bool *tekstowa);
-    /**
- * 
- * 
- * funkcja umozliwajaca edycje wartosci w konkretnych komorkach arkusza
- * 
- * 
- */
     int zwrocwartosc(int w, int k);
     int edycjawartosc(int w, int k, std::string wartosc);
     std::string zwrocwartosctekstowa(int w, int k);
