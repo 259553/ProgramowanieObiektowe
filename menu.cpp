@@ -19,7 +19,8 @@ void menu()
     cout << "3.Wyswietl zawartosc" << endl;
     cout << "4.Zapisz tablice" << endl;
     cout << "5.Wczytaj tablice" << endl;
-    cout << "6.Rozszerz arkusz" <<endl;
+    cout << "6.Rozszerz arkusz" << endl;
+    cout << "7.Funkcje matematyczne" << endl;
     cout << "0.Wylacz program" << endl;
     cin >> liczba;
     system("clear");
@@ -60,11 +61,30 @@ void menu()
         break;
       }
       break;
-      case 6:
+    case 6:
+    {
+      rozszerzarkusz(&tablica);
+    }
+    break;
+
+    case 7:
+    {
+      cout << "Ktora kolumne chcesz obliczyc: " << endl;
+      int kolumna;
+      cin >> kolumna;
+      if (tablica.czykolumnatekstowa(kolumna))
       {
-        rozszerzarkusz(&tablica);
+        cout << "Jest to kolumna tekstowa, nie mozna wykonac na niej obliczen" << endl;
+      }
+      else
+      {
+        cout << "Wartosc maksymalna: " << znajdzmax(&tablica, kolumna) << endl;
+        cout << "Wartosc minimalna: " << znajdzmin(&tablica, kolumna) << endl;
+        cout << "Wartosc srednia: " << srednia(&tablica, kolumna) << endl;
+        cout << "Suma kolumn wynosi: " << sumowaniekolumny(&tablica, kolumna) << endl;
       }
       break;
+    }
     }
   } while (liczba != 0);
   cout << "Do widzenia!" << endl;
@@ -157,6 +177,50 @@ void rozszerzarkusz(arkusz *warkusz)
   }
   if (warkusz->rozszerz(k, w, czytekst))
   {
-    cout<<"Nieprawidlowy rozmiar arkusza \n";
+    cout << "Nieprawidlowy rozmiar arkusza \n";
   }
+}
+
+int znajdzmax(arkusz *tablica, int kolumny)
+{
+  int max = tablica->zwrocwartosc(0, kolumny);
+  for (int i = 1; i < tablica->zwrocwiersz(); i++)
+  {
+    if (max < tablica->zwrocwartosc(i, kolumny))
+    {
+      max = tablica->zwrocwartosc(i, kolumny);
+    }
+  }
+  return max;
+}
+
+int znajdzmin(arkusz *tablica, int kolumny)
+{
+  int min = tablica->zwrocwartosc(0, kolumny);
+
+  for (int i = 1; i < tablica->zwrocwiersz(); i++)
+  {
+    if (min > tablica->zwrocwartosc(i, kolumny))
+    {
+      min = tablica->zwrocwartosc(i, kolumny);
+    }
+  }
+
+  return min;
+}
+
+double srednia(arkusz *tablica, int kolumny)
+{
+  double x = static_cast<double>(sumowaniekolumny(tablica, kolumny)) / tablica->zwrocwiersz();
+  return x;
+}
+
+int sumowaniekolumny(arkusz *tablica, int kolumny)
+{
+  int suma = 0;
+  for (int i = 0; i < tablica->zwrockolumna(); i++)
+  {
+    suma += tablica->zwrocwartosc(i, kolumny);
+  }
+  return suma;
 }

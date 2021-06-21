@@ -91,10 +91,6 @@ string komorkaliczbowa::zwrocwartosctekstowa()
 {
   return std::to_string(wartosc);
 }
-bool komorkaliczbowa::czytekstowa()
-{
-  return false;
-}
 
 bool arkusz::czykolumnatekstowa(int k)
 {
@@ -109,10 +105,21 @@ string komorkatekstowa::zwrocwartosctekstowa()
 {
   return wartosc;
 }
-bool komorkatekstowa::czytekstowa()
+
+int arkusz::zwrocwartosc(int w, int k)
 {
-  return true;
+ int x=0;
+ try
+ {
+   x = stoi(tablica[w][k]->zwrocwartosctekstowa());
+ }
+ catch(const std::exception& e)
+ {
+   
+ }
+ return x;
 }
+
 int arkusz::rozszerz(int x, int y, bool v)
 {
   if (x < 1 || y < 1)
